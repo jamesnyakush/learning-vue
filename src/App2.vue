@@ -1,23 +1,24 @@
-<script setup>
-import { ref } from 'vue';
-
-
-const name = ref('James Nyakundi');
-const status = ref('active');
-const users = ref(['James Nyakundi', 'Auka Reuben', 'Joseph Auka']);
-
-
-const toggleStatus = () => {
-  if (status.value === 'active') {
-    status.value = 'pending';
-  } else if (status.value === 'pending') {
-    status.value = 'inactive';
-  } else {
-    status.value = 'active';
+<script>
+export default {
+  data() {
+    return {
+      name: 'James Nyakundi',
+      status: 'active',
+      users: ['James Nyakundi', 'Auka Reuben', 'Joseph Auka']
+    };
+  },
+  methods: {
+    toggleStatus() {
+      if(this.status === 'active') {
+        this.status = 'pending';
+      }else if(this.status === 'pending') {
+        this.status = 'inactive';
+      } else {
+        this.status = 'active';
+      }
+    }
   }
-};
-
-
+}
 </script>
 
 <template>
@@ -41,7 +42,7 @@ const toggleStatus = () => {
     <ul>
       <li v-for="user in users" :key="user">{{ user }}</li>
     </ul>
-
+  
     <button v-on:click="toggleStatus">Change Status</button>
   </div>
 
